@@ -1,7 +1,9 @@
+import Employees from "../components/employees";
+
 const Meet = () => {
   return (
     <>
-      <p> Hello world!</p>
+      <Employees />
     </>
   );
 };
