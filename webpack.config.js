@@ -34,7 +34,10 @@ module.exports = {
     },
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      favicon: "./public/favicon.ico",
+    }),
     new Dotenv(),
   ],
   output: {
