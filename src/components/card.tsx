@@ -1,6 +1,5 @@
 import { Employee } from "../types";
-
-const backUpImage = "photoNotFound.jpg";
+import backUpImage from "../images/photoNotFound.jpg";
 
 const Card = ({ employee }: { employee: Employee }) => {
   const addDefaultSrc = (ev: HTMLImageElement) => {

@@ -16,6 +16,13 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(svg|png|jpg|jpeg|gif)$/,
+        include: /src\/images/,
+        use: {
+          loader: "file-loader",
+        },
+      },
     ],
   },
   resolve: {
