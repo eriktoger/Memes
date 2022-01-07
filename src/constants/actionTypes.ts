@@ -1,0 +1,4 @@
+export const SET_NAME = "SET_NAME";
+export const SET_OFFICE = "SET_OFFICE";
+export const TOGGLE_NAME_ORDER = "TOGGLE_NAME_ORDER";
+export const TOGGLE_OFFICE_ORDER = "TOGGLE_OFFICE_ORDER";
