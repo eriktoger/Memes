@@ -15,7 +15,7 @@ const Meet = () => {
   const [searchAndSort, setSearchAndSort] = useState(initialSearchAndSort);
   return (
     <>
-      <div>
+      <div className="fixed w-full bg-gradient-to-r from-slate-100 to-slate-200">
         <Header />
         <Search
           searchAndSort={searchAndSort}

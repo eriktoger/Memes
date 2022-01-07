@@ -29,10 +29,12 @@ const Employees = ({ searchAndSort }: { searchAndSort: SearchAndSort }) => {
     setSortedAndFiltered(sorted);
   }, [employees, searchAndSort]);
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5">
-      {sortedAndFiltered.map((employee) => (
-        <Card key={employee.name} employee={employee} />
-      ))}
+    <div className="min-h-screen bg-forrest bg-cover bg-fixed pt-40 md:pt-48 bg-top-12">
+      <div className="grid grid-cols-2 md:grid-cols-5">
+        {sortedAndFiltered.map((employee) => (
+          <Card key={employee.name} employee={employee} />
+        ))}
+      </div>
     </div>
   );
 };
