@@ -1,15 +1,14 @@
 import { Employee } from "../types";
 
-const backUpUrl =
-  "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&";
+const backUpImage = "photoNotFound.jpg";
 
 const Card = ({ employee }: { employee: Employee }) => {
   const addDefaultSrc = (ev: HTMLImageElement) => {
     ev.onerror = null;
-    ev.src = backUpUrl;
+    ev.src = backUpImage;
   };
 
-  const imgSrc = employee.imagePortraitUrl ?? backUpUrl;
+  const imgSrc = employee.imagePortraitUrl ?? backUpImage;
 
   return (
     <div className="m-1 p-1">
