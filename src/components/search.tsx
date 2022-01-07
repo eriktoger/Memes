@@ -1,12 +1,18 @@
 import { FaSortAlphaDown } from "react-icons/fa";
 import { FaSortAlphaUp } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
-import { SearchAndSort } from "../types";
+import { useSearchAndSortContext } from "../context/sortAndSearch";
 
-const SortButton = ({ sort, Icon }: { sort: () => void; Icon: IconType }) => (
+const SortButton = ({
+  onClick,
+  Icon,
+}: {
+  onClick: () => void;
+  Icon: IconType;
+}) => (
   <button
     className="bg-slate-400 hover:bg-slate-600 text-white font-bold mr-5 py-2 px-2 border border-gray-700 rounded-md"
-    onClick={() => sort()}
+    onClick={onClick}
   >
     <Icon color="black" size="28px" />
   </button>
@@ -33,42 +39,26 @@ const SearchInput = ({
   />
 );
 
-const Search = ({
-  searchAndSort,
-  setSearchAndSort,
-}: {
-  searchAndSort: SearchAndSort;
-  setSearchAndSort: React.Dispatch<React.SetStateAction<SearchAndSort>>;
-}) => {
-  const { name, office, nameOrder, officeOrder } = searchAndSort;
+const Search = () => {
+  const {
+    name,
+    office,
+    nameOrder,
+    officeOrder,
+    setName,
+    setOffice,
+    toggleNameOrder,
+    toggleOfficeOrder,
+  } = useSearchAndSortContext();
+
   const NameSortIcon = nameOrder === 1 ? FaSortAlphaUp : FaSortAlphaDown;
   const OfficeSortIcon = officeOrder === 1 ? FaSortAlphaUp : FaSortAlphaDown;
 
-  const onSortName = () =>
-    setSearchAndSort((oldValue) => ({
-      ...oldValue,
-      nameOrder: oldValue.nameOrder * -1,
-      sortField: "name",
-    }));
-
-  const onSortOffice = () =>
-    setSearchAndSort((oldValue) => ({
-      ...oldValue,
-      officeOrder: oldValue.officeOrder * -1,
-      sortField: "office",
-    }));
-
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setSearchAndSort((oldValue) => ({
-      ...oldValue,
-      name: event.target.value,
-    }));
+    setName(event.target.value);
 
   const onOfficeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setSearchAndSort((oldValue) => ({
-      ...oldValue,
-      office: event.target.value,
-    }));
+    setOffice(event.target.value);
 
   return (
     <div className="flex">
@@ -85,9 +75,9 @@ const Search = ({
         </div>
         <div className="flex p-4">
           <SortTitle text="Sort name:" />
-          <SortButton sort={onSortName} Icon={NameSortIcon} />
+          <SortButton onClick={toggleNameOrder} Icon={NameSortIcon} />
           <SortTitle text="Sort office:" />
-          <SortButton sort={onSortOffice} Icon={OfficeSortIcon} />
+          <SortButton onClick={toggleOfficeOrder} Icon={OfficeSortIcon} />
         </div>
       </div>
     </div>

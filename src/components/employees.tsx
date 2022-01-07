@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
+import { useSearchAndSortContext } from "../context/sortAndSearch";
 import { getEmployees } from "../services/employees";
-import { Employee, SearchAndSort } from "../types";
+import { Employee } from "../types";
 import Card from "./card";
 
-const Employees = ({ searchAndSort }: { searchAndSort: SearchAndSort }) => {
+const Employees = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [sortedAndFiltered, setSortedAndFiltered] = useState<Employee[]>([]);
+  const { name, office, nameOrder, officeOrder, sortField } =
+    useSearchAndSortContext();
 
   useEffect(() => {
     getEmployees().then((data) => setEmployees(data));
   }, []);
 
   useEffect(() => {
-    const { name, office, nameOrder, officeOrder, sortField } = searchAndSort;
     const filteredEmployees = employees
       .filter((employee) =>
         employee.name.toLowerCase().includes(name.toLowerCase())
@@ -27,7 +29,8 @@ const Employees = ({ searchAndSort }: { searchAndSort: SearchAndSort }) => {
     });
 
     setSortedAndFiltered(sorted);
-  }, [employees, searchAndSort]);
+  }, [employees, name, office, nameOrder, officeOrder, sortField]);
+
   return (
     <div className="min-h-screen bg-forrest bg-cover bg-fixed pt-40 md:pt-48 bg-top-12">
       <div className="grid grid-cols-2 md:grid-cols-5">
