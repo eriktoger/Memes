@@ -40,19 +40,10 @@ const SearchInput = ({
 );
 
 const Search = () => {
-  const {
-    name,
-    office,
-    nameOrder,
-    officeOrder,
-    setName,
-    setOffice,
-    toggleNameOrder,
-    toggleOfficeOrder,
-  } = useSearchAndSortContext();
+  const { name, nameOrder, setName, toggleNameOrder } =
+    useSearchAndSortContext();
 
   const NameSortIcon = nameOrder === 1 ? FaSortAlphaUp : FaSortAlphaDown;
-  const OfficeSortIcon = officeOrder === 1 ? FaSortAlphaUp : FaSortAlphaDown;
 
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setName(event.target.value);

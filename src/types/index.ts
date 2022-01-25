@@ -14,9 +14,6 @@ export type Meme = {
 export type SearchAndSort = {
   name: string;
   nameOrder: number;
-  office: string;
-  officeOrder: number;
-  sortField: "name" | "office";
 };
 
 export type SearchAndSortState = {
@@ -24,11 +21,6 @@ export type SearchAndSortState = {
   setName: (name: string) => void;
   nameOrder: number;
   toggleNameOrder: () => void;
-  office: string;
-  setOffice: (office: string) => void;
-  officeOrder: number;
-  toggleOfficeOrder: () => void;
-  sortField: "name" | "office";
 };
 
 export type ReducerAction =
@@ -38,11 +30,4 @@ export type ReducerAction =
     }
   | {
       type: typeof TOGGLE_NAME_ORDER;
-    }
-  | {
-      type: typeof SET_OFFICE;
-      payload: string;
-    }
-  | {
-      type: typeof TOGGLE_OFFICE_ORDER;
     };
