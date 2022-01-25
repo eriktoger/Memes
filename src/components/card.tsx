@@ -1,13 +1,13 @@
-import { Employee } from "../types";
+import { Meme } from "../types";
 import backUpImage from "../images/photoNotFound.jpg";
 
-const Card = ({ employee }: { employee: Employee }) => {
+const Card = ({ meme }: { meme: Meme }) => {
   const addDefaultSrc = (ev: HTMLImageElement) => {
     ev.onerror = null;
     ev.src = backUpImage;
   };
 
-  const imgSrc = employee.imagePortraitUrl ?? backUpImage;
+  const imgSrc = meme.url ?? backUpImage;
 
   return (
     <div className="m-1 p-1">
@@ -21,8 +21,7 @@ const Card = ({ employee }: { employee: Employee }) => {
       </div>
       <div className="text-center">
         <div className="inline-block bg-slate-200 m-1 p-1 rounded-md">
-          <p className="text-lg font-semibold ">{employee.name}</p>
-          <p className="text-sm font-light">{employee.office}</p>
+          <p className="text-lg font-semibold ">{meme.name}</p>
         </div>
       </div>
     </div>

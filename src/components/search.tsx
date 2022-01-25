@@ -33,7 +33,7 @@ const SearchInput = ({
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <input
-    className={"border-2 border-gray-300 w-48 rounded-md"}
+    className={"border-2 border-gray-300 w-48 rounded-md mr-2"}
     value={value}
     onChange={onChange}
   />
@@ -57,28 +57,13 @@ const Search = () => {
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setName(event.target.value);
 
-  const onOfficeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setOffice(event.target.value);
-
   return (
     <div className="flex">
-      <div className="md:flex m-auto">
-        <div>
-          <div className="flex m-2">
-            <SearchTitle text="Search name:" />
-            <SearchInput value={name} onChange={onNameChange} />
-          </div>
-          <div className="flex m-2">
-            <SearchTitle text="Search office:" />
-            <SearchInput value={office} onChange={onOfficeChange} />
-          </div>
-        </div>
-        <div className="flex p-4">
-          <SortTitle text="Sort name:" />
-          <SortButton onClick={toggleNameOrder} Icon={NameSortIcon} />
-          <SortTitle text="Sort office:" />
-          <SortButton onClick={toggleOfficeOrder} Icon={OfficeSortIcon} />
-        </div>
+      <div className="md:flex m-auto align-middle pb-4">
+        <SearchTitle text="Search name:" />
+        <SearchInput value={name} onChange={onNameChange} />
+        <SortTitle text="Sort name:" />
+        <SortButton onClick={toggleNameOrder} Icon={NameSortIcon} />
       </div>
     </div>
   );

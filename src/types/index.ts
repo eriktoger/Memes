@@ -5,10 +5,10 @@ import {
   TOGGLE_OFFICE_ORDER,
 } from "../constants/actionTypes";
 
-export type Employee = {
+export type Meme = {
   name: string;
-  imagePortraitUrl: string;
-  office: string;
+  url: string;
+  id: string;
 };
 
 export type SearchAndSort = {
